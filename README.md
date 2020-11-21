@@ -1,6 +1,24 @@
 # tiqhub-frontend
 
-## Project setup
+The goal of tiqhub is to enable users to create and share a ticker for any event.
+
+### User stories
+- [ ] User can start a ticker with a name
+- [ ] User can publish messages to the ticker
+- [ ] User can view the ticker using a link
+
+### Design inspiration
+
+![start-ticker](design-templates/start-ticker.png)
+Source: [UI Design Daily](https://uidesigndaily.com/posts/sketch-submit-form-day-1189)
+
+![view-ticker](design-templates/view-ticker.png)
+Source: Google Bundesliga Ticker
+
+### Built with
+- [Vue.js](https://vuejs.org/)
+
+## Getting started
 ```
 npm install
 ```
@@ -19,6 +37,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
