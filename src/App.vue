@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/feed">Feed</router-link>
   </div>
   <router-view/>
 </template>
@@ -20,7 +20,6 @@
 }
 
 #nav {
-  display: none;
   padding: 30px;
 
   a {
