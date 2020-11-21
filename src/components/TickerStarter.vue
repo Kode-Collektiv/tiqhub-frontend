@@ -3,7 +3,6 @@
     <h1>Join or Create Ticker</h1>
     <input v-model="tickerId" id="ticker-starter" placeholder="Enter Ticker-ID...">
     <button class="go-button" @click="go">GO!</button>
-    <h1>Ticker-ID: {{ tickerId }}</h1>
   </div>
 </template>
 
