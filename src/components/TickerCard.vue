@@ -2,18 +2,18 @@
   <div class="card-container">
     <div class="card-header">
       <div class="card-logo">
-        <h3>Logo</h3>
+        <img :src="require('../assets/' + logoSrc + '')" alt="logo">
       </div>
       <div class="card-title">
-        <h1>Title</h1>
+        <h3>{{title}}</h3>
       </div>
       <div class="card-subtitle">
-        <h3>Subtitle</h3>
+        <h5>{{subtitle}}</h5>
       </div>
 
     </div>
     <div class="card-content">
-      <p>Some content that is inside the card</p>
+      <p>{{content}}</p>
     </div>
 
   </div>
@@ -24,11 +24,18 @@ import {Options, Vue} from 'vue-class-component';
 
 @Options({
   props: {
-    msg: String
+    title: String,
+    logoSrc: String,
+    subtitle: String,
+    content: String
   }
 })
 export default class TickerCard extends Vue {
-  msg!: string
+  title!: string;
+  logoSrc!: string;
+  subtitle!: string;
+  content!: string;
+
 }
 </script>
 
@@ -38,36 +45,40 @@ export default class TickerCard extends Vue {
 .card-container {
   display: grid;
   grid-template-rows: 1fr 4fr;
-  height: 300px;
   border: rgba(100, 100 , 100, 0.8) solid 0.1em;
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  padding: 1em;
 }
 
 .card-header {
   border-bottom: rgba(100, 100 , 100, 0.8) solid 0.1em;
-  margin-left: 1em;
-  margin-right: 1em;
-
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 9fr 3fr;
 
 }
 
 .card-title {
-
+  //border: rgba(100, 100 , 100, 0.8) solid 0.1em;
+  text-align: start;
 }
 
 .card-subtitle {
-
+  //border: rgba(100, 100 , 100, 0.8) solid 0.1em;
+  text-align: end;
+  color: rgba(100, 100, 100, 1.0);
 }
 
 .card-logo {
-
+  //border: rgba(100, 100 , 100, 0.8) solid 0.1em;
+  text-align: start;
+  img {
+    height: 36px;
+  }
 }
 
 .card-content {
-
+  text-align: start;
 }
 
 
