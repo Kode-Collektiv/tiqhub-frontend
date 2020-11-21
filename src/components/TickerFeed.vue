@@ -25,12 +25,13 @@
 import {Options, Vue} from 'vue-class-component';
 import TickerCard from "@/components/TickerCard.vue";
 import TickerInput from "@/components/TickerInput.vue";
-import { Manager, Socket} from "socket.io-client";
+import { io, Socket} from "socket.io-client";
 
 interface FeedMessage {
   text: string;
   timestamp: number;
 }
+
 
 @Options({
   components: {
@@ -43,16 +44,12 @@ interface FeedMessage {
   },
   methods: {
 
-  },
-  mounted () {
-    this.createSocket()
   }
 })
 
 export default class TickerFeed extends Vue {
 
-  private manager!: Manager
-  public socket!: Socket
+  public socket = io('ws://localhost:3000?tickerId=' + 1234, {withCredentials: false});
   private id!: string
 
   items: any[]= [
@@ -75,16 +72,15 @@ export default class TickerFeed extends Vue {
   ]
 
   receiveDate(feedMsgString: string) {
-    console.log(feedMsgString);
+    console.log('message from broadcast ' + feedMsgString);
     const feedMsg: any = JSON.parse(feedMsgString);
     this.items.unshift(feedMsg);
   }
 
-  createSocket () {
-    this.manager = new Manager("ws://localhost:3000?tickerId=" + this.id);
-    this.socket = this.manager.socket("/");
-    this.socket.on("message", this.receiveDate)
+  created () {
+    this.socket.on('broadcast', this.receiveDate)
   }
+
 }
 
 </script>
