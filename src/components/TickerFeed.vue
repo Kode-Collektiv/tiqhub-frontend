@@ -53,6 +53,8 @@ export default class TickerFeed extends Vue {
 
   manager!: Manager
   socket!: Socket
+  id!: string
+
   items: any[]= [
     {
       text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
@@ -79,7 +81,7 @@ export default class TickerFeed extends Vue {
   }
 
   createSocket () {
-    this.manager = new Manager("ws://localhost:3000");
+    this.manager = new Manager("ws://localhost:3000?tickerId=" + this.id);
     this.socket = this.manager.socket("/");
     this.socket.on("message", this.receiveDate)
 
