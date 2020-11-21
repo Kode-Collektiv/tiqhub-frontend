@@ -19,7 +19,7 @@ export default class Feed extends Vue {
 
   feeds = [
     {
-      id: "asdoäpijfgjmn034985",
+      id: "",
       title: "Ganz toole fussball feed"
     }
   ]
