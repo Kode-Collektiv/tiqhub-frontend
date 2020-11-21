@@ -1,0 +1,37 @@
+name: Deploy a branch to github pages
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.15.1'
+
+      - name: Build
+        run: npm install && npm run build
+
+      - name: Deploy staging
+        if: github.ref == 'refs/heads/develop'
+        run: .github/scripts/deploy-to-gh-pages.sh
+        env:
+          GITHUB_REPO: Kode-Collektiv/staging-tiqhub.io.git
+
+      - name: Deploy production
+        if: github.ref == 'refs/heads/master'
+        run: .github/scripts/deploy-to-gh-pages.sh
+        env:
+          GITHUB_REPO: Kode-Collektiv/tiqhub.io.git
