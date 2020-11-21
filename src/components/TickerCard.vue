@@ -45,9 +45,9 @@ export default class TickerCard extends Vue {
 .card-container {
   display: grid;
   grid-template-rows: 1fr auto;
-  border: rgba(100, 100 , 100, 0.8) solid 0.1em;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  border: rgba(100, 100 , 100, 0.8) solid 1px;
+  border-radius: 0.5em;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
   padding: 1em;
 }
 
