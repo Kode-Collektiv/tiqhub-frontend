@@ -10,9 +10,11 @@ The goal of tiqhub is to enable users to create and share a ticker for any event
 ### Design inspiration
 
 ![start-ticker](design-templates/start-ticker.png)
+
 Source: [UI Design Daily](https://uidesigndaily.com/posts/sketch-submit-form-day-1189)
 
 ![view-ticker](design-templates/view-ticker.png)
+
 Source: Google Bundesliga Ticker
 
 ### Built with
