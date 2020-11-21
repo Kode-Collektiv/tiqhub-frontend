@@ -28,3 +28,7 @@
   }
 }
 </style>
+
+<style>
+  @import "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css";
+</style>
