@@ -25,8 +25,7 @@
 import {Options, Vue} from 'vue-class-component';
 import TickerCard from "@/components/TickerCard.vue";
 import TickerInput from "@/components/TickerInput.vue";
-import { Manager } from "socket.io-client";
-
+import { Manager, Socket} from "socket.io-client";
 
 interface FeedMessage {
   text: string;
@@ -43,22 +42,18 @@ interface FeedMessage {
     id: String,
   },
   methods: {
-    createSocket () {
-      const manager = new Manager("ws://localhost:3000");
-      const socket = manager.socket("/");
 
-      socket.on("connect", () => {
-        console.log(`connect ${socket.id}`);
-      });
-    }
   },
   mounted () {
     this.createSocket()
   }
 })
+
 export default class TickerFeed extends Vue {
 
-  items = [
+  manager!: Manager
+  socket!: Socket
+  items: any[]= [
     {
       text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
       timestamp: 1605986524,
@@ -77,6 +72,21 @@ export default class TickerFeed extends Vue {
     }
   ]
 
+  receiveDate(feedMsgString: string) {
+    console.log(feedMsgString);
+    const feedMsg: any = JSON.parse(feedMsgString);
+    this.items.unshift(feedMsg);
+  }
+
+  createSocket () {
+    this.manager = new Manager("ws://localhost:3000");
+    this.socket = this.manager.socket("/");
+    this.socket.on("message", this.receiveDate)
+
+    this.socket.on("connect", () => {
+      this.socket.send(JSON.stringify({text:"hello", timestamp: 1605986524}))
+    });
+  }
 }
 
 </script>
