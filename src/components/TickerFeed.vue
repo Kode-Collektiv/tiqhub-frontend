@@ -6,8 +6,15 @@
 
     <TickerInput/>
 
-    <div class="ticker-card" v-for="item of items" :key="item.id">
-      <TickerCard :title="item.title" :subtitle="item.subtitle" :logoSrc="item.logo" :content="item.content"/>
+    <div class="timeline">
+      <div class="ticker-card" v-for="item of items" :key="item.id">
+        <TickerCard :text="item.text" :timestamp="item.timestamp"/>
+      </div>
+
+      <header class="timeline-header">
+        <span class="tag is-medium is-primary">Start</span>
+      </header>
+
     </div>
   </div>
 
@@ -53,46 +60,28 @@ export default class TickerFeed extends Vue {
 
   items = [
     {
-      id: '1',
-      title: 'Goal for Eintracht Frankfurt 1:0',
-      subtitle: '45 min ago',
-      logo: 'eintracht.svg.png',
-      content: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content'
+      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
+      timestamp: 1605986524,
     },
     {
-      id: '2',
-      title: 'Red Card Eintrach Frankfurt',
-      subtitle: '23 min ago',
-      logo: 'eintracht.svg.png',
-      content: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content'
+      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
+      timestamp: 1605986524,
     },
     {
-      id: '3',
-      title: 'Goal for Bayern Munich',
-      subtitle: '32 min ago',
-      logo: 'logo.png',
-      content: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content'
+      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
+      timestamp: 1605986524,
     },
     {
-      id: '4',
-      title: 'Hello World 4',
-      subtitle: '43 min ago',
-      logo: 'logo.png',
-      content: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content'
+      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
+      timestamp: 1605986524,
     },
     {
-      id: '5',
-      title: 'Hello World 5',
-      subtitle: '54 min ago',
-      logo: 'logo.png',
-      content: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content'
+      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
+      timestamp: 1605986524,
     },
     {
-      id: '6',
-      title: 'Hello World 6',
-      subtitle: '12 min ago',
-      logo: 'logo.png',
-      content: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content'
+      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
+      timestamp: 1605986524,
     }
   ]
 
