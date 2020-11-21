@@ -18,7 +18,6 @@
     </div>
   </div>
 
-
 </template>
 
 <script lang="ts">
@@ -49,7 +48,7 @@ interface FeedMessage {
       const socket = manager.socket("/");
 
       socket.on("connect", () => {
-          console.log(`connect ${socket.id}`);
+        console.log(`connect ${socket.id}`);
       });
     }
   },
@@ -60,14 +59,6 @@ interface FeedMessage {
 export default class TickerFeed extends Vue {
 
   items = [
-    {
-      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
-      timestamp: 1605986524,
-    },
-    {
-      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
-      timestamp: 1605986524,
-    },
     {
       text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
       timestamp: 1605986524,
