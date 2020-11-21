@@ -61,7 +61,7 @@ export default class TickerFeed extends Vue {
   }
 
   created () {
-    this.socket = io('ws://localhost:3000?tickerId=' + this.tickerId, {withCredentials: false});
+    this.socket = io(process.env.TIQHUB_BACKEND_URL + '?tickerId=' + this.tickerId, {withCredentials: false});
     this.socket.on('broadcast', this.receiveDate)
   }
 
