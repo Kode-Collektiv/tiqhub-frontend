@@ -59,18 +59,15 @@ export default class TickerCard extends Vue {
 }
 
 .card-title {
-  //border: rgba(100, 100 , 100, 0.8) solid 0.1em;
   text-align: start;
 }
 
 .card-subtitle {
-  //border: rgba(100, 100 , 100, 0.8) solid 0.1em;
   text-align: end;
   color: rgba(100, 100, 100, 1.0);
 }
 
 .card-logo {
-  //border: rgba(100, 100 , 100, 0.8) solid 0.1em;
   text-align: start;
   img {
     height: 36px;
