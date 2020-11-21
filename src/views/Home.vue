@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <TickerStarter/>
+    <div class="grid-container">
+      <div></div>
+      <TickerStarter/>
+      <div></div>
+    </div>
   </div>
 </template>
 
@@ -15,3 +19,20 @@ import TickerStarter from "@/components/TickerStarter.vue";
 })
 export default class Home extends Vue {}
 </script>
+
+<style scoped lang="scss">
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+}
+
+
+@media (min-width: 1200px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+  }
+}
+
+</style>
