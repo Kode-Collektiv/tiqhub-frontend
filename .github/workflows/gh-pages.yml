@@ -21,14 +21,23 @@ jobs:
         with:
           node-version: '14.15.1'
 
-      - name: Build
+      - name: Build staging
+        if: github.ref == 'refs/heads/develop'
         run: npm install && npm run build
+        env:
+          NODE_ENV: staging
 
       - name: Deploy staging
         if: github.ref == 'refs/heads/develop'
         run: .github/scripts/deploy-to-gh-pages.sh
         env:
           GITHUB_REPO: Kode-Collektiv/staging-tiqhub.io.git
+
+      - name: Build production
+        if: github.ref == 'refs/heads/master'
+        run: npm install && npm run build
+        env:
+          NODE_ENV: production
 
       - name: Deploy production
         if: github.ref == 'refs/heads/master'
