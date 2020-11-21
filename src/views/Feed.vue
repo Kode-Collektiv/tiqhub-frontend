@@ -1,6 +1,6 @@
 <template>
   <div class="feed">
-    <TickerFeed :title="feeds[0].title" :id="feeds[0].id"/>
+    <TickerFeed :title="example_title" :tickerId="tickerId"/>
   </div>
 </template>
 
@@ -10,18 +10,16 @@ import TickerFeed from "@/components/TickerFeed.vue";
 import TickerCard from "@/components/TickerCard.vue";
 
 @Options({
+  props: {
+    tickerId: String,
+  },
   components: {
     TickerFeed,
     TickerCard
   },
 })
 export default class Feed extends Vue {
-
-  feeds = [
-    {
-      id: "1234",
-      title: "Ganz toole fussball feed"
-    }
-  ]
+  private tickerId!: string
+  private example_title = "Ganz toole fussball feed";
 }
 </script>

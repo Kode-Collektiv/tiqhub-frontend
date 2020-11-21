@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <div class="grid-container">
-      <div></div>
       <TickerStarter/>
       <div></div>
     </div>

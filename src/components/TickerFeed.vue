@@ -2,7 +2,7 @@
 
   <div id="ticker-feed" class="container">
 
-    <h1 class="title">{{title}}</h1>
+    <h1 class="title">{{title}} / {{tickerId}}</h1>
 
     <TickerInput/>
 
@@ -40,7 +40,7 @@ interface FeedMessage {
   },
   props: {
     title: String,
-    id: String,
+    tickerId: String,
   },
   methods: {
 
@@ -49,27 +49,10 @@ interface FeedMessage {
 
 export default class TickerFeed extends Vue {
 
-  public socket = io('ws://localhost:3000?tickerId=' + 1234, {withCredentials: false});
-  private id!: string
+  public tickerId!: string
+  public socket!: Socket
 
-  items: any[]= [
-    {
-      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
-      timestamp: 1605986524,
-    },
-    {
-      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
-      timestamp: 1605986524,
-    },
-    {
-      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
-      timestamp: 1605986524,
-    },
-    {
-      text: 'This is a demo text with some test content. This is a demo text with some test content. This is a demo text with some test content .This is a demo text with some test content',
-      timestamp: 1605986524,
-    }
-  ]
+  items: any[]= []
 
   receiveDate(feedMsgString: string) {
     console.log('message from broadcast ' + feedMsgString);
@@ -78,6 +61,7 @@ export default class TickerFeed extends Vue {
   }
 
   created () {
+    this.socket = io('ws://localhost:3000?tickerId=' + this.tickerId, {withCredentials: false});
     this.socket.on('broadcast', this.receiveDate)
   }
 

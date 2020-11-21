@@ -8,7 +8,6 @@
 
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
-import { io } from 'socket.io-client';
 
 @Options({
   props: {
@@ -16,13 +15,10 @@ import { io } from 'socket.io-client';
   }
 })
 export default class TickerCard extends Vue {
-
-  private socket = io('ws://localhost:3000', {});
-  tickerId = '';
+  tickerId!: string
 
   go() {
-    console.log(this.tickerId)
-    this.socket.emit("chat message", this.tickerId)
+    this.$router.push({name: 'feed', params: { tickerId: this.tickerId}});
   }
 }
 </script>

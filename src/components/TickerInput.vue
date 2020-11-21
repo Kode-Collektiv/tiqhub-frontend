@@ -17,21 +17,12 @@ import {Options, Vue} from 'vue-class-component';
 export default class TickerInput extends Vue {
   message!: string
 
-  created() {
-    const parent: any = this.$parent;
-    parent.socket.emit('join', 'default');
-    parent.socket.on('broadcast', (msg: string) => {
-      console.log('received broadcast message: ' + msg);
-    })
-    console.log('joined room: default')
-  }
-
   go() {
-    console.log(this.message)
+    const uts = Math.round(Date.now() / 1000)
     const parent: any = this.$parent;
-    parent.socket.emit("1234", JSON.stringify({text: this.message, timestamp: 1605986524}))
+    const output = JSON.stringify({text: this.message, timestamp: uts})
+    parent.socket.emit(parent.tickerId, output)
   }
-
 }
 
 </script>
