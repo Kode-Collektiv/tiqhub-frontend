@@ -6,7 +6,6 @@
 
     <TickerInput/>
 
-
     <div class="ticker-card" v-for="item of items" :key="item.id">
       <TickerCard :title="item.title" :subtitle="item.subtitle" :logoSrc="item.logo" :content="item.content"/>
     </div>
@@ -19,7 +18,7 @@
 import {Options, Vue} from 'vue-class-component';
 import TickerCard from "@/components/TickerCard.vue";
 import TickerInput from "@/components/TickerInput.vue";
-
+import SocketIO from 'socket.io-client'
 
 @Options({
   components: {
@@ -28,6 +27,19 @@ import TickerInput from "@/components/TickerInput.vue";
   },
   props: {
     title: String,
+    id: String,
+  },
+  methods: {
+    createSocket () {
+      const socket = SocketIO("http://127.0.0.1:3000" + "/" + this.id)
+      this.socket = socket
+      this.socket.on('data', (data: string) => { // your server emits, ready, data, etc...
+        console.log('data')
+      })
+    }
+  },
+  mounted () {
+    this.createSocket()
   }
 })
 export default class TickerFeed extends Vue {
