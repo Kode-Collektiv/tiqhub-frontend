@@ -51,9 +51,9 @@ interface FeedMessage {
 
 export default class TickerFeed extends Vue {
 
-  manager!: Manager
-  socket!: Socket
-  id!: string
+  private manager!: Manager
+  public socket!: Socket
+  private id!: string
 
   items: any[]= [
     {
