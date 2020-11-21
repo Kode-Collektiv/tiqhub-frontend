@@ -1,14 +1,9 @@
 <template>
-  <div class="home">
-    <div class="grid-container">
-      <TickerStarter/>
-      <div></div>
-    </div>
-  </div>
+  <TickerStarter/>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import {Options, Vue} from 'vue-class-component';
 import TickerStarter from "@/components/TickerStarter.vue";
 
 @Options({
@@ -16,7 +11,8 @@ import TickerStarter from "@/components/TickerStarter.vue";
     TickerStarter,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+}
 </script>
 
 <style scoped lang="scss">
