@@ -1,5 +1,12 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
+import {VueCookieNext} from 'vue-cookie-next'
 
-createApp(App).use(router).mount('#app')
+import './../node_modules/bulma/css/bulma.css';
+
+const app = createApp(App)
+
+app.use(VueCookieNext)
+app.use(router)
+app.mount('#app')

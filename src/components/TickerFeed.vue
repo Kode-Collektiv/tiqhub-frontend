@@ -1,19 +1,34 @@
 <template>
-  <div class="ticker-card" v-for="item of items" :key="item.id">
-    <TickerCard :title="item.title" :subtitle="item.subtitle" :logoSrc="item.logo" :content="item.content"/>
+
+  <div id="ticker-feed" class="container">
+
+    <h1 class="title">{{title}}</h1>
+
+    <TickerInput/>
+
+
+    <div class="ticker-card" v-for="item of items" :key="item.id">
+      <TickerCard :title="item.title" :subtitle="item.subtitle" :logoSrc="item.logo" :content="item.content"/>
+    </div>
   </div>
+
+
 </template>
 
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
 import TickerCard from "@/components/TickerCard.vue";
+import TickerInput from "@/components/TickerInput.vue";
 
 
 @Options({
   components: {
-    TickerCard
+    TickerCard,
+    TickerInput
   },
-  props: {}
+  props: {
+    title: String,
+  }
 })
 export default class TickerFeed extends Vue {
 
@@ -69,8 +84,8 @@ export default class TickerFeed extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
-.ticker-card {
-  margin: 2em;
+.card-container {
+  margin: 1em 0px;
 }
 
 

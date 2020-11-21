@@ -1,6 +1,6 @@
 <template>
   <div class="feed">
-    <TickerFeed/>
+    <TickerFeed :title="feeds[0].title" :id="feeds[0].id"/>
   </div>
 </template>
 
@@ -15,5 +15,13 @@ import TickerCard from "@/components/TickerCard.vue";
     TickerCard
   },
 })
-export default class Home extends Vue {}
+export default class Feed extends Vue {
+
+  feeds = [
+    {
+      id: 1,
+      title: "Ganz toole fussball feed"
+    }
+  ]
+}
 </script>
