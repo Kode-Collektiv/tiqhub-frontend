@@ -84,10 +84,6 @@ export default class TickerFeed extends Vue {
     this.manager = new Manager("ws://localhost:3000?tickerId=" + this.id);
     this.socket = this.manager.socket("/");
     this.socket.on("message", this.receiveDate)
-
-    this.socket.on("connect", () => {
-      this.socket.send(JSON.stringify({text:"hello", timestamp: 1605986524}))
-    });
   }
 }
 
