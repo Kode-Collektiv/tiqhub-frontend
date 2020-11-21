@@ -45,11 +45,12 @@ interface FeedMessage {
   },
   methods: {
     createSocket () {
-      const socket = SocketIO("http://127.0.0.1:3000" + "/" + this.id)
-      this.socket = socket
-      this.socket.on('data', (data: string) => { // your server emits, ready, data, etc...
-        console.log('data')
-      })
+      const manager = new Manager("ws://localhost:3000");
+      const socket = manager.socket("/");
+
+      socket.on("connect", () => {
+          console.log(`connect ${socket.id}`);
+      });
     }
   },
   mounted () {
