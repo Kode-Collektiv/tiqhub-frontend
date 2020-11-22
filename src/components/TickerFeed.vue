@@ -61,7 +61,13 @@ export default class TickerFeed extends Vue {
   }
 
   created () {
-    this.socket = io(process.env.TIQHUB_BACKEND_URL + '?tickerId=' + this.tickerId, {withCredentials: false});
+    const backend = process.env.NODE_ENV === "production"
+        ? "wss:///tiqhub.azurewebsites.net"
+        : process.env.NODE_ENV === "staging"
+            ? "wss:///tiqhub.azurewebsites.net"
+            : "ws:///127.0.0.1:3000"
+
+    this.socket = io( backend + '?tickerId=' + this.tickerId, {withCredentials: false});
     this.socket.on('broadcast', this.receiveDate)
   }
 
