@@ -2,9 +2,13 @@
 
   <div id="ticker-feed" class="container">
 
-    <h1 class="title">Welcome to {{tickerId}}</h1>
+    <div class="feed-title">
+      <span class="title">Welcome to {{tickerId}} </span>
+      <TickerShareModal :tickerId="tickerId"/>
+    </div>
 
     <TickerInput v-if="isTickerAdmin()"/>
+
 
     <div class="timeline">
       <div class="ticker-card" v-for="item of items" :key="item.id">
@@ -25,6 +29,7 @@
 import {Options, Vue} from 'vue-class-component';
 import TickerCard from "@/components/TickerCard.vue";
 import TickerInput from "@/components/TickerInput.vue";
+import TickerShareModal from "@/components/TickerShareModal.vue";
 import { io, Socket} from "socket.io-client";
 import { VueCookieNext } from 'vue-cookie-next'
 
@@ -37,7 +42,8 @@ interface FeedMessage {
 @Options({
   components: {
     TickerCard,
-    TickerInput
+    TickerInput,
+    TickerShareModal
   },
   props: {
     title: String,
@@ -87,5 +93,8 @@ export default class TickerFeed extends Vue {
   padding: 2em;
 }
 
+.feed-title {
+  margin: 1em 0;
+}
 
 </style>
