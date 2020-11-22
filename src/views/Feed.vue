@@ -20,6 +20,5 @@ import TickerCard from "@/components/TickerCard.vue";
 })
 export default class Feed extends Vue {
   private tickerId!: string
-  private example_title = "Ganz toole fussball feed";
 }
 </script>

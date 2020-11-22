@@ -2,7 +2,7 @@
 
   <div id="ticker-feed" class="container">
 
-    <h1 class="title">{{title}} / {{tickerId}}</h1>
+    <h1 class="title">Welcome to {{tickerId}}</h1>
 
     <TickerInput/>
 
@@ -12,7 +12,7 @@
       </div>
 
       <header class="timeline-header">
-        <span class="tag is-medium is-primary">Start</span>
+        <span class="tag is-medium is-success">Start of Feed</span>
       </header>
 
     </div>
@@ -77,6 +77,10 @@ export default class TickerFeed extends Vue {
 
 .card-container {
   margin: 1em 0px;
+}
+
+.container {
+  padding: 2em;
 }
 
 

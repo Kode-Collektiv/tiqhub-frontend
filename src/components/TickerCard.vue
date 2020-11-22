@@ -3,8 +3,10 @@
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
-      <p class="heading">{{getAbsolutTime()}}</p>
-      <p>{{text}}</p>
+      <p class="heading">{{ getAbsolutTime() }}</p>
+      <div class="box asd">
+          <p>{{ text }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -33,4 +35,9 @@ export default class TickerCard extends Vue {
 .timeline-content {
   text-align: left;
 }
+
+.timeline-body {
+
+}
+
 </style>
