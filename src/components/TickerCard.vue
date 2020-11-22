@@ -14,8 +14,8 @@ import {Options, Vue} from 'vue-class-component';
 
 @Options({
   props: {
-    timestamp: Number,
-    text: String
+    text: String,
+    timestamp: Number
   },
 })
 export default class TickerCard extends Vue {
