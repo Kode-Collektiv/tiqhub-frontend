@@ -4,7 +4,7 @@
 
     <h1 class="title">{{title}} / {{tickerId}}</h1>
 
-    <TickerInput/>
+    <TickerInput v-if="isTickerAdmin()"/>
 
     <div class="timeline">
       <div class="ticker-card" v-for="item of items" :key="item.id">
@@ -26,6 +26,7 @@ import {Options, Vue} from 'vue-class-component';
 import TickerCard from "@/components/TickerCard.vue";
 import TickerInput from "@/components/TickerInput.vue";
 import { io, Socket} from "socket.io-client";
+import { VueCookieNext } from 'vue-cookie-next'
 
 interface FeedMessage {
   text: string;
@@ -66,6 +67,10 @@ export default class TickerFeed extends Vue {
       withCredentials: false
     });
     this.socket.on('broadcast', this.receiveDate)
+  }
+
+  isTickerAdmin(): boolean {
+    return VueCookieNext.getCookie(this.tickerId) != undefined;
   }
 }
 

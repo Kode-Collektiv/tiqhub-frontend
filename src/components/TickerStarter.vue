@@ -41,7 +41,7 @@ export default class TickerCard extends Vue {
 
     axios.post(backend + "/tickers",  { name: this.tickerId })
         .then(response => VueCookieNext.setCookie(this.tickerId, response.data.accessToken))
-        .catch(error => console.log(error))
+        .catch(_ => console.log("Unable to create ticker. Probably ticker already created. Forwarding to it!"))
         .then(() => this.$router.push({name: 'feed', params: {tickerId: this.tickerId}}));
   }
 }
