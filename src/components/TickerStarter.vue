@@ -30,10 +30,12 @@ import {Options, Vue} from 'vue-class-component';
 @Options({
   props: {}
 })
+
 export default class TickerCard extends Vue {
   tickerId!: string
 
   go() {
+    console.log(this.tickerId);
     this.$router.push({name: 'feed', params: {tickerId: this.tickerId}});
   }
 }

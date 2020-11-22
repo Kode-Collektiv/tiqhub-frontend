@@ -28,8 +28,8 @@ export default class TickerInput extends Vue {
     const uts = Math.round(Date.now() / 1000)
     const parent: any = this.$parent;
     const output = JSON.stringify({text: this.message, timestamp: uts})
-
-    parent.socket.emit(parent.tickerId, output)
+    console.log('message from input' + this.message)
+    parent.socket.emit(parent.tickerId, output);
   }
 }
 

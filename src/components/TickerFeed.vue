@@ -40,13 +40,12 @@ interface FeedMessage {
   },
   props: {
     title: String,
-    tickerId: String,
+    tickerId: String
   },
   methods: {
 
   }
 })
-
 export default class TickerFeed extends Vue {
 
   public tickerId!: string
@@ -61,16 +60,14 @@ export default class TickerFeed extends Vue {
   }
 
   created () {
-    const backend = process.env.NODE_ENV === "production"
-        ? "wss:///tiqhub.azurewebsites.net"
-        : process.env.NODE_ENV === "staging"
-            ? "wss:///tiqhub.azurewebsites.net"
-            : "ws:///127.0.0.1:3000"
+    const backend = process.env.VUE_APP_TIQHUB_BACKEND_URL;
+    console.log(process.env.NODE_ENV);
     console.log(backend);
-    this.socket = io( backend + '?tickerId=' + this.tickerId, {withCredentials: false});
+    this.socket = io( backend + '?tickerId=' + this.$route.params.tickerId, {
+      withCredentials: false
+    });
     this.socket.on('broadcast', this.receiveDate)
   }
-
 }
 
 </script>
