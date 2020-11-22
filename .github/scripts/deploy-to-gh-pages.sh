@@ -11,6 +11,8 @@ target_branch="master"
 # navigate into the build output directory
 cd $build_dir
 
+cp index.html 404.html
+
 git init
 git add -A
 
