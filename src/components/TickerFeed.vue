@@ -61,8 +61,7 @@ export default class TickerFeed extends Vue {
 
   created () {
     const backend = process.env.VUE_APP_TIQHUB_BACKEND_URL;
-    console.log(process.env.NODE_ENV);
-    console.log(backend);
+
     this.socket = io( backend + '?tickerId=' + this.$route.params.tickerId, {
       withCredentials: false
     });
