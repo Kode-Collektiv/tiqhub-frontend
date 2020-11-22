@@ -8,7 +8,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/dotenv": "^8.2.0",
+    "axios": "^0.21.0",
     "bulma": "^0.9.1",
     "bulma-timeline": "^3.0.4",
     "core-js": "^3.6.5",

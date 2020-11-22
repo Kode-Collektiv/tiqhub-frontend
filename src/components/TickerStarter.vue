@@ -26,6 +26,8 @@
 
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
+import axios, {AxiosResponse} from 'axios'
+import { VueCookieNext } from 'vue-cookie-next'
 
 @Options({
   props: {}
@@ -35,9 +37,12 @@ export default class TickerCard extends Vue {
   tickerId = "";
 
   go() {
-    console.log(this.tickerId);
-    this.$router.push({name: 'feed', params: {tickerId: this.tickerId}});
-    this.tickerId = "";
+    const backend = process.env.VUE_APP_TIQHUB_BACKEND_URL_CRUD;
+
+    axios.post(backend + "/tickers",  { name: this.tickerId })
+        .then(response => VueCookieNext.setCookie(this.tickerId, response.data.accessToken))
+        .catch(error => console.log(error))
+        .then(() => this.$router.push({name: 'feed', params: {tickerId: this.tickerId}}));
   }
 }
 </script>
