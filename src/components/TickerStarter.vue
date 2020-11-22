@@ -9,7 +9,7 @@
 
           <div class="field is-grouped">
             <p class="control is-expanded">
-              <input v-model="tickerId" class="input" type="text" placeholder="Enter Ticker-ID...">
+              <input v-model="tickerId" class="input" @keyup.enter="go" type="text" placeholder="Enter Ticker-ID...">
             </p>
             <p class="control">
               <a class="button is-link is-primary" @click="go">
@@ -32,11 +32,12 @@ import {Options, Vue} from 'vue-class-component';
 })
 
 export default class TickerCard extends Vue {
-  tickerId!: string
+  tickerId = "";
 
   go() {
     console.log(this.tickerId);
     this.$router.push({name: 'feed', params: {tickerId: this.tickerId}});
+    this.tickerId = "";
   }
 }
 </script>

@@ -3,7 +3,7 @@
 
     <div class="field is-grouped">
       <p class="control is-expanded">
-        <input class="input is-primary" v-model="message" type="text">
+        <input class="input is-primary" v-model="message" @keyup.enter="go" type="text">
       </p>
       <p class="control">
         <a class="button is-link is-primary" @click="go">
@@ -22,7 +22,7 @@ import {Options, Vue} from 'vue-class-component';
   props: {}
 })
 export default class TickerInput extends Vue {
-  message!: string
+  message = "";
 
   go() {
     const uts = Math.round(Date.now() / 1000)
@@ -30,6 +30,7 @@ export default class TickerInput extends Vue {
     const output = JSON.stringify({text: this.message, timestamp: uts})
     console.log('message from input' + this.message)
     parent.socket.emit(parent.tickerId, output);
+    this.message= "";
   }
 }
 
