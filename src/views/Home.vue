@@ -1,5 +1,7 @@
 <template>
-  <TickerStarter/>
+  <div class="grid-container">
+    <TickerStarter class="center"/>
+  </div>
 </template>
 
 <script lang="ts">
@@ -17,17 +19,14 @@ export default class Home extends Vue {
 
 <style scoped lang="scss">
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
-
-@media (min-width: 1200px) {
-  .grid-container {
-    display: grid;
-    grid-template-columns: 3fr 3fr 3fr;
-  }
-}
 
 </style>
